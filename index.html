@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar Tugas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>&#x2713; Daftar Tugas</h1>
+      <p>Lacak semua tugasmu dalam satu tempat</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num" id="s-total">0</div>
+        <div class="stat-lbl">Total tugas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num done" id="s-done">0</div>
+        <div class="stat-lbl">Selesai</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num pending" id="s-pending">0</div>
+        <div class="stat-lbl">Belum selesai</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-lbl">
+        <span>Progres keseluruhan</span>
+        <span id="pct-lbl">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="add-form">
+      <input type="text" id="task-input" placeholder="Tambah tugas baru..." maxlength="80" />
+      <select id="cat-select">
+        <option value="work">Kerja</option>
+        <option value="personal">Personal</option>
+        <option value="urgent">Mendesak</option>
+        <option value="health">Kesehatan</option>
+      </select>
+      <button onclick="addTask()">+ Tambah</button>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="setFilter('all', this)">Semua</button>
+      <button class="filter-btn" onclick="setFilter('pending', this)">Belum selesai</button>
+      <button class="filter-btn" onclick="setFilter('done', this)">Sudah selesai</button>
+      <button class="filter-btn" onclick="setFilter('urgent', this)">Mendesak</button>
+    </div>
+
+    <div id="pending-section">
+      <div class="section-title" id="pending-title">Belum selesai</div>
+      <div class="tasks" id="pending-list"></div>
+    </div>
+
+    <div id="done-section">
+      <div class="section-header">
+        <div class="section-title" id="done-title" style="margin-bottom:0">Sudah selesai</div>
+        <button class="clear-btn" onclick="clearDone()">Hapus semua selesai</button>
+      </div>
+      <div class="tasks" id="done-list"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
